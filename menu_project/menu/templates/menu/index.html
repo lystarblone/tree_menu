@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Меню</title>
+    <style>
+        ul { list-style-type: none; padding-left: 20px; }
+        .active { font-weight: bold; color: blue; }
+    </style>
+</head>
+<body>
+    <h1>Меню</h1>
+    {% load menu_tags %}
+    {% draw_menu 'main_menu' %}
+</body>
+</html>
