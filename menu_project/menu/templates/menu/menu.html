@@ -5,7 +5,7 @@
                 {{ item.item.title }}
             </a>
             {% if item.is_expanded and item.children %}
-                {% include 'menu/menu.html' with menu_tree=item.children %}
+                {% include 'menu/menu.html' with menu_tree=item.children current_url=current_url %}
             {% endif %}
         </li>
     {% empty %}

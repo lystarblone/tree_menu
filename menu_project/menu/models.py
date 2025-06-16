@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse, NoReverseMatch
 
 class MenuItem(models.Model):
     menu_name = models.CharField(max_length=100)
@@ -10,8 +11,11 @@ class MenuItem(models.Model):
 
     def get_url(self):
         if self.named_url:
-            return self.named_url
-        return self.url
+            try:
+                return reverse(self.named_url)
+            except NoReverseMatch:
+                return self.url or '#'
+        return self.url or '#'
 
     def __str__(self):
         return self.title
