@@ -4,7 +4,7 @@ from ..models import MenuItem
 
 register = template.Library()
 
-@register.inclusion_tag('menu/index.html', takes_context=True)
+@register.inclusion_tag('menu/menu.html', takes_context=True)
 def draw_menu(context, menu_name):
     request = context.get('request')
     if not request:
@@ -12,7 +12,17 @@ def draw_menu(context, menu_name):
     else:
         current_url = request.path_info
 
-    menu_items = MenuItem.objects.filter(menu_name=menu_name).select_related('parent').prefetch_related('children').order_by('order')
+    try:
+        menu_items = list(MenuItem.objects.filter(menu_name=menu_name).order_by('order'))
+    except Exception as e:
+        print(f"Ошибка при загрузке данных: {e}")
+        menu_items = []
+
+    if not menu_items:
+        return {
+            'menu_tree': [],
+            'current_url': current_url
+        }
 
     active_item = None
     for item in menu_items:
@@ -26,14 +36,17 @@ def draw_menu(context, menu_name):
         while current:
             expanded_items.add(current.id)
             current = current.parent
-        for child in active_item.children.all():
-            expanded_items.add(child.id)
+        for child in menu_items:
+            if child.parent_id == active_item.id:
+                expanded_items.add(child.id)
 
-    def build_tree(items, parent=None):
+    def build_tree(items, parent=None, depth=0, max_depth=10):
+        if depth > max_depth:
+            return []
         tree = []
         for item in items:
             if item.parent_id == (parent.id if parent else None):
-                children = build_tree(items, item)
+                children = build_tree(items, item, depth + 1, max_depth)
                 tree.append({
                     'item': item,
                     'children': children,
