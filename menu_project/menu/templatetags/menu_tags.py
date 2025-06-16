@@ -9,12 +9,17 @@ def draw_menu(context, menu_name):
     request = context.get('request')
     current_url = request.path_info if request else '/'
 
-    menu_items = list(MenuItem.objects.filter(menu_name=menu_name).order_by('order').select_related('parent'))
+    menu_items = list(MenuItem.objects.filter(menu_name=menu_name).order_by('order', 'id').select_related('parent'))
 
     if not menu_items:
         return {'menu_tree': [], 'current_url': current_url}
 
-    active_item = next((item for item in menu_items if item.get_url() == current_url), None)
+    active_item = None
+    for item in menu_items:
+        url = item.get_url()
+        if url == current_url or (url.endswith('/') and current_url.startswith(url)) or (current_url.endswith('/') and url.startswith(current_url.rstrip('/'))):
+            active_item = item
+            break
 
     expanded_items = set()
     if active_item:
@@ -26,18 +31,17 @@ def draw_menu(context, menu_name):
             if child.parent_id == active_item.id:
                 expanded_items.add(child.id)
 
-    def build_tree(items, parent=None, depth=0, max_depth=10):
-        if depth > max_depth:
-            return []
+    def build_tree(items, parent=None):
         tree = []
         for item in items:
             if item.parent_id == (parent.id if parent else None):
-                children = build_tree(items, item, depth + 1, max_depth)
-                is_active = item.get_url() == current_url
+                children = build_tree(items, item)
+                is_active = item.get_url() == current_url or (item.get_url().endswith('/') and current_url.startswith(item.get_url())) or (current_url.endswith('/') and item.get_url().startswith(current_url.rstrip('/')))
                 tree.append({
                     'item': item,
                     'children': children,
-                    'is_expanded': item.id in expanded_items or is_active
+                    'is_expanded': item.id in expanded_items or is_active,
+                    'is_active': is_active
                 })
         return tree
 

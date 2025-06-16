@@ -1,7 +1,7 @@
 <ul>
     {% for item in menu_tree %}
         <li>
-            <a href="{{ item.item.get_url }}" {% if item.item.get_url == current_url %}class="active"{% endif %}>
+            <a href="{{ item.item.get_url }}" {% if item.is_active %}class="active"{% endif %}>
                 {{ item.item.title }}
             </a>
             {% if item.is_expanded and item.children %}
