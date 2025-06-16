@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title|default:"Мое приложение" }}</title>
+    <style>
+        ul { list-style-type: none; padding-left: 20px; }
+        .active { font-weight: bold; color: blue; }
+    </style>
+</head>
+<body>
+    <h1>{{ title|default:"Добро пожаловать" }}</h1>
+    {% load menu_tags %}
+    {% draw_menu 'main_menu' %}
+    {% draw_menu 'admin_menu' %}
+</body>
+</html>

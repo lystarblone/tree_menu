@@ -16,8 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import index_view
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_view, name='index'),
+    path('services/', TemplateView.as_view(template_name='example.html', extra_context={'title': 'Услуги'}), name='services_list'),
+    path('services/consulting/', TemplateView.as_view(template_name='example.html', extra_context={'title': 'Консультации'}), name='consulting'),
+    path('services/training/', TemplateView.as_view(template_name='example.html', extra_context={'title': 'Обучение'}), name='training_list'),
+    path('services/training/course1/', TemplateView.as_view(template_name='example.html', extra_context={'title': 'Курс 1'}), name='course1'),
+    path('contact/', TemplateView.as_view(template_name='example.html', extra_context={'title': 'Контакты'}), name='contact'),
+    path('admin/users/', TemplateView.as_view(template_name='example.html', extra_context={'title': 'Пользователи'}), name='admin_users'),
+    path('admin/users/roles/', TemplateView.as_view(template_name='example.html', extra_context={'title': 'Роли'}), name='admin_roles'),
 ]
