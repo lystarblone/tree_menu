@@ -4,7 +4,7 @@
         {% if node.children %}
           <a href="{{ node.url }}" class="menu-link {% if node.is_active %}active{% endif %} menu-toggle" aria-expanded="{{ node.is_expanded|yesno:'true,false' }}">
             {{ node.title }}
-            <span class="float-end badge bg-secondary badge-menu">{{ node.children|length }}</span>
+            <span class="float-end badge badge-menu">{{ node.children|length }}</span>
           </a>
           <div class="submenu {% if not node.is_expanded %}d-none{% endif %}">
             {% include 'menu/menu.html' with menu_tree=node.children %}
@@ -18,4 +18,4 @@
     {% empty %}
       <li class="text-muted">Пустое меню</li>
     {% endfor %}
-  </ul>  
+  </ul>
