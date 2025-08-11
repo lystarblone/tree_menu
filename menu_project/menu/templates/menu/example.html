@@ -1,16 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ title|default:"Мое приложение" }}</title>
-    <style>
-        ul { list-style-type: none; padding-left: 20px; }
-        .active { font-weight: bold; color: blue; }
-    </style>
-</head>
-<body>
-    <h1>{{ title|default:"Добро пожаловать" }}</h1>
-    {% load menu_tags %}
-    {% draw_menu 'book_menu_1' %}
-    {% draw_menu 'book_menu_2' %}
-</body>
-</html>
+{% extends "index.html" %}
+{% load menu_tags %}
+
+{% block title %}Пример меню{% endblock %}
+
+{% block sidebar %}
+  <div class="mb-4">
+    <h6 class="mb-2">Список книг</h6>
+    {% draw_menu 'books_menu' %}
+  </div>
+
+  <div>
+    <h6 class="mb-2">Короткое меню</h6>
+    {% draw_menu 'short_menu' %}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <h1>Демонстрация работы меню</h1>
+  <p class="text-muted">Кликните на пункты в сайдбаре слева. Активный пункт подсвечивается; все, что выше — развернуто; первый уровень детей активного пункта — тоже развернут.</p>
+  <hr>
+  <p>Текущий URL: <strong>{{ request.path }}</strong></p>
+{% endblock %}

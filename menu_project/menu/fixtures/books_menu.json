@@ -1,0 +1,38 @@
+[
+    { "model": "menu.menuitem", "pk": 1, "fields": { "menu_name": "books_menu", "title": "Книга 1", "named_url": "book1", "parent": null, "order": 1 } },
+    { "model": "menu.menuitem", "pk": 2, "fields": { "menu_name": "books_menu", "title": "Введение", "named_url": "book1_intro", "parent": 1, "order": 1 } },
+    { "model": "menu.menuitem", "pk": 3, "fields": { "menu_name": "books_menu", "title": "Глава 1", "named_url": "book1_chapter1", "parent": 1, "order": 2 } },
+    { "model": "menu.menuitem", "pk": 4, "fields": { "menu_name": "books_menu", "title": "Раздел 1.1", "named_url": "book1_section1_1", "parent": 3, "order": 1 } },
+    { "model": "menu.menuitem", "pk": 5, "fields": { "menu_name": "books_menu", "title": "Подраздел 1.1.1", "named_url": "book1_section1_1_sub1", "parent": 4, "order": 1 } },
+    { "model": "menu.menuitem", "pk": 6, "fields": { "menu_name": "books_menu", "title": "Раздел 1.2", "named_url": "book1_section1_2", "parent": 3, "order": 2 } },
+    { "model": "menu.menuitem", "pk": 7, "fields": { "menu_name": "books_menu", "title": "Глава 2", "named_url": "book1_chapter2", "parent": 1, "order": 3 } },
+    { "model": "menu.menuitem", "pk": 8, "fields": { "menu_name": "books_menu", "title": "Раздел 2.1", "named_url": "book1_section2_1", "parent": 7, "order": 1 } },
+    { "model": "menu.menuitem", "pk": 9, "fields": { "menu_name": "books_menu", "title": "Подраздел 2.1.1", "named_url": "book1_section2_1_sub2", "parent": 8, "order": 1 } },
+    { "model": "menu.menuitem", "pk": 10, "fields": { "menu_name": "books_menu", "title": "Раздел 2.2", "named_url": "book1_section2_2", "parent": 7, "order": 2 } },
+    { "model": "menu.menuitem", "pk": 11, "fields": { "menu_name": "books_menu", "title": "Глава 3", "named_url": "book1_chapter3", "parent": 1, "order": 4 } },
+    { "model": "menu.menuitem", "pk": 12, "fields": { "menu_name": "books_menu", "title": "Приложение", "named_url": "book1_appendix", "parent": 11, "order": 1 } },
+    { "model": "menu.menuitem", "pk": 13, "fields": { "menu_name": "books_menu", "title": "Заключение", "named_url": "book1_conclusion", "parent": 1, "order": 5 } },
+  
+    { "model": "menu.menuitem", "pk": 14, "fields": { "menu_name": "books_menu", "title": "Книга 2", "named_url": "book2", "parent": null, "order": 2 } },
+    { "model": "menu.menuitem", "pk": 15, "fields": { "menu_name": "books_menu", "title": "Пролог", "named_url": "book2_prologue", "parent": 14, "order": 1 } },
+    { "model": "menu.menuitem", "pk": 16, "fields": { "menu_name": "books_menu", "title": "Глава 1", "named_url": "book2_chapter1", "parent": 14, "order": 2 } },
+    { "model": "menu.menuitem", "pk": 17, "fields": { "menu_name": "books_menu", "title": "Часть 1", "named_url": "book2_chapter1_part1", "parent": 16, "order": 1 } },
+    { "model": "menu.menuitem", "pk": 18, "fields": { "menu_name": "books_menu", "title": "Часть 2", "named_url": "book2_chapter1_part2", "parent": 16, "order": 2 } },
+    { "model": "menu.menuitem", "pk": 19, "fields": { "menu_name": "books_menu", "title": "Глава 2", "named_url": "book2_chapter2", "parent": 14, "order": 3 } },
+    { "model": "menu.menuitem", "pk": 20, "fields": { "menu_name": "books_menu", "title": "Эпилог", "named_url": "book2_epilogue", "parent": 14, "order": 4 } },
+  
+    { "model": "menu.menuitem", "pk": 21, "fields": { "menu_name": "books_menu", "title": "Книга 3", "named_url": "book3", "parent": null, "order": 3 } },
+    { "model": "menu.menuitem", "pk": 22, "fields": { "menu_name": "books_menu", "title": "Глава 1", "named_url": "book3_chapter1", "parent": 21, "order": 1 } },
+    { "model": "menu.menuitem", "pk": 23, "fields": { "menu_name": "books_menu", "title": "Глава 2", "named_url": "book3_chapter2", "parent": 21, "order": 2 } },
+    { "model": "menu.menuitem", "pk": 24, "fields": { "menu_name": "books_menu", "title": "Тема 1", "named_url": "book3_chapter2_topic1", "parent": 23, "order": 1 } },
+    { "model": "menu.menuitem", "pk": 25, "fields": { "menu_name": "books_menu", "title": "Тема 2", "named_url": "book3_chapter2_topic2", "parent": 23, "order": 2 } },
+    { "model": "menu.menuitem", "pk": 26, "fields": { "menu_name": "books_menu", "title": "Глава 3", "named_url": "book3_chapter3", "parent": 21, "order": 3 } },
+    { "model": "menu.menuitem", "pk": 27, "fields": { "menu_name": "books_menu", "title": "Глава 4", "named_url": "book3_chapter4", "parent": 21, "order": 4 } },
+  
+    { "model": "menu.menuitem", "pk": 28, "fields": { "menu_name": "books_menu", "title": "Книга 4", "named_url": "book4", "parent": null, "order": 4 } },
+    { "model": "menu.menuitem", "pk": 29, "fields": { "menu_name": "books_menu", "title": "Глава 1", "named_url": "book4_chapter1", "parent": 28, "order": 1 } },
+    { "model": "menu.menuitem", "pk": 30, "fields": { "menu_name": "books_menu", "title": "Ветка 1", "named_url": "book4_chapter1_branch1", "parent": 29, "order": 1 } },
+    { "model": "menu.menuitem", "pk": 31, "fields": { "menu_name": "books_menu", "title": "Ветка 2", "named_url": "book4_chapter1_branch2", "parent": 29, "order": 2 } },
+    { "model": "menu.menuitem", "pk": 32, "fields": { "menu_name": "books_menu", "title": "Ветка 3", "named_url": "book4_chapter1_branch3", "parent": 29, "order": 3 } }
+  ]
+  

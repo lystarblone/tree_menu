@@ -1,14 +1,21 @@
-<ul>
-    {% for item in menu_tree %}
-        <li>
-            <a href="{{ item.item.get_url }}" {% if item.is_active %}class="active"{% endif %}>
-                {{ item.item.title }}
-            </a>
-            {% if item.is_expanded and item.children %}
-                {% include 'menu/menu.html' with menu_tree=item.children current_url=current_url %}
-            {% endif %}
-        </li>
+<ul class="list-unstyled mb-0">
+    {% for node in menu_tree %}
+      <li class="menu-item">
+        {% if node.children %}
+          <a href="{{ node.url }}" class="menu-link {% if node.is_active %}active{% endif %} menu-toggle" aria-expanded="{{ node.is_expanded|yesno:'true,false' }}">
+            {{ node.title }}
+            <span class="float-end badge bg-secondary badge-menu">{{ node.children|length }}</span>
+          </a>
+          <div class="submenu {% if not node.is_expanded %}d-none{% endif %}">
+            {% include 'menu/menu.html' with menu_tree=node.children %}
+          </div>
+        {% else %}
+          <a href="{{ node.url }}" class="menu-link {% if node.is_active %}active{% endif %}">
+            {{ node.title }}
+          </a>
+        {% endif %}
+      </li>
     {% empty %}
-        <li>Нет пунктов меню</li>
+      <li class="text-muted">Пустое меню</li>
     {% endfor %}
-</ul>
+  </ul>  
